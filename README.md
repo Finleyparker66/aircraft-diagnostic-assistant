@@ -1,4 +1,5 @@
 
+
 A Python-based tool designed to simulate aircraft fault diagnosis for a Cessna 172.
 
 ## Overview
@@ -48,3 +49,6 @@ This project follows a structured diagnostic approach similar to real-world airc
 
 Finley Parker  
 Aspiring Aircraft Engineer
+
+# aircraft-diagnostic-assistant
+Cessna 172 diagnostic tool for aircraft fault troubleshooting
