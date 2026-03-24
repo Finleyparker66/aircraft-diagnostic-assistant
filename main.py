@@ -6,22 +6,19 @@ print("--------------------------------")
 
 symptom = input("Enter aircraft symptom: ").lower()
 
-# Try each system
-result = diagnose_engine(symptom)
+results = []
 
-if not result:
-    result = diagnose_fuel(symptom)
+# Collect results from systems
+results.extend(diagnose_engine(symptom))
+results.extend(diagnose_fuel(symptom) or [])
 
 # Output
-if result:
-    print("\nSystem:", result["system"])
+if results:
+    print("\nPossible Issues:")
 
-    print("\nLikely Causes:")
-    for cause in result["causes"]:
-        print("-", cause)
-
-    print("\nRecommended Checks:")
-    for check in result["checks"]:
-        print("-", check)
+    for i, r in enumerate(results, 1):
+        print(f"\n{i}. {r['cause']} ({r['likelihood']} likelihood)")
+        print("   System:", r["system"])
+        print("   Check:", r["check"])
 else:
     print("\nNo data available for this symptom yet.")

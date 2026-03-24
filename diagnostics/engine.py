@@ -1,32 +1,44 @@
 def diagnose_engine(symptom):
+    results = []
+
     if "stall" in symptom:
-        return {
+        results.append({
             "system": "Engine / Fuel System",
-            "causes": [
-                "Fuel starvation",
-                "Carburettor icing",
-                "Air intake blockage"
-            ],
-            "checks": [
-                "Check fuel supply",
-                "Apply carb heat",
-                "Inspect air intake"
-            ]
-        }
+            "cause": "Fuel starvation",
+            "likelihood": "High",
+            "check": "Check fuel supply"
+        })
+        results.append({
+            "system": "Engine / Fuel System",
+            "cause": "Carburettor icing",
+            "likelihood": "Medium",
+            "check": "Apply carb heat"
+        })
+        results.append({
+            "system": "Engine / Fuel System",
+            "cause": "Air intake blockage",
+            "likelihood": "Low",
+            "check": "Inspect air intake"
+        })
 
-    elif "rough" in symptom:
-        return {
+    if "rough" in symptom:
+        results.append({
             "system": "Engine",
-            "causes": [
-                "Spark plug fouling",
-                "Incorrect mixture",
-                "Carburettor icing"
-            ],
-            "checks": [
-                "Inspect spark plugs",
-                "Adjust mixture control",
-                "Apply carb heat"
-            ]
-        }
+            "cause": "Spark plug fouling",
+            "likelihood": "High",
+            "check": "Inspect spark plugs"
+        })
+        results.append({
+            "system": "Engine",
+            "cause": "Incorrect mixture",
+            "likelihood": "Medium",
+            "check": "Adjust mixture"
+        })
+        results.append({
+            "system": "Engine",
+            "cause": "Carburettor icing",
+            "likelihood": "Medium",
+            "check": "Apply carb heat"
+        })
 
-    return None
+    return results
