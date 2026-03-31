@@ -1,6 +1,6 @@
 
 
-A Python-based tool designed to simulate aircraft fault diagnosis for a Cessna 172.
+A Python-based tool (made in PowerShell) designed to simulate aircraft fault diagnosis for a Cessna 172.
 
 ## Overview
 
