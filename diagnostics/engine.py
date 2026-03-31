@@ -42,3 +42,26 @@ def diagnose_engine(symptom):
         })
 
     return results
+
+
+def follow_up_engine(symptom):
+    if "rough" in symptom or "stall" in symptom:
+        answer = input("\nIs carb heat applied? (yes/no): ").lower()
+
+        if answer == "no":
+            return {
+                "system": "Engine",
+                "cause": "Carburettor icing likely",
+                "likelihood": "HIGH",
+                "check": "Apply carb heat immediately"
+            }
+
+        elif answer == "yes":
+            return {
+                "system": "Engine",
+                "cause": "Possible fuel or ignition issue",
+                "likelihood": "MEDIUM",
+                "check": "Check fuel supply and spark plugs"
+            }
+
+    return None
