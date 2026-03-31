@@ -46,22 +46,33 @@ def diagnose_engine(symptom):
 
 def follow_up_engine(symptom):
     if "rough" in symptom or "stall" in symptom:
-        answer = input("\nIs carb heat applied? (yes/no): ").lower()
 
-        if answer == "no":
+        carb_heat = input("\nIs carb heat applied? (yes/no): ").lower()
+
+        if carb_heat == "no":
             return {
                 "system": "Engine",
-                "cause": "Carburettor icing likely",
+                "cause": "Carburettor icing highly likely",
                 "likelihood": "HIGH",
                 "check": "Apply carb heat immediately"
             }
 
-        elif answer == "yes":
-            return {
-                "system": "Engine",
-                "cause": "Possible fuel or ignition issue",
-                "likelihood": "MEDIUM",
-                "check": "Check fuel supply and spark plugs"
-            }
+        elif carb_heat == "yes":
+            rpm_change = input("Does engine RPM improve with carb heat? (yes/no): ").lower()
+
+            if rpm_change == "yes":
+                return {
+                    "system": "Engine",
+                    "cause": "Carburettor icing confirmed",
+                    "likelihood": "HIGH",
+                    "check": "Continue carb heat and monitor"
+                }
+            else:
+                return {
+                    "system": "Engine",
+                    "cause": "Fuel or ignition issue likely",
+                    "likelihood": "MEDIUM",
+                    "check": "Inspect fuel system and spark plugs"
+                }
 
     return None
